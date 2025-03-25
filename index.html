@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="espacio">
+        <img id="astro" src="./astronauta.webp" alt="">
+    </div>
+    <div class="container-buttons">
+        <button id="move">Mover</button>
+        <button id="color">Colorear</button>
+        <button id="float">Flotar</button>
+    </div>
+</body>
+<script>
+    const astro = document.getElementById("astro");
+    const espacio = document.getElementById("espacio");
+    const moveButton = document.getElementById("move");
+    const colorButton = document.getElementById("color");
+    const floatButton = document.getElementById("float");
+    
+    let astroPosicion = 50;
+    let astroEscala= 1;
+    
+    function moverDerecha() {
+        astro.style.transform = "translateX(700px) scale(0.6)";
+    }
+    function moverIzquierda() {
+        astro.style.transform = "translateX(0) scale(1.2)";
+    }
+    function resetAstro(){
+        document.getElementById('astro');
+        astro.style.transform = 'translateX(0) rotate(0) scale(1)';
+    }
+    function floatAstro(){
+        astro.style.top = "10px"
+    }
+    function spaceColor(){
+        document.body.style.backgroundColor = "#420a8d"
+    }
+    window.addEventListener("keydown", (d) => {
+        if (d.code === "Space") {
+            moverDerecha();
+        }
+        if (d.code === "Enter"){
+            alert("Hello Space!");
+        }
+        if (d.key == "r"){
+            moveButton.style.opacity = 0.5;
+            moveButton.style.cursor = "not-allowed";
+            moveButton.setAttribute("disabled", "");
+        }
+    })
+    moveButton.addEventListener("mousedown", () => {
+        moverDerecha();
+    })
+    moveButton.addEventListener("mouseup", resetAstro);
+    colorButton.addEventListener("click", spaceColor);
+    floatButton.addEventListener("click", floatAstro);
+</script>
+</html>
