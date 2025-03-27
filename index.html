@@ -33,8 +33,15 @@
         astro.style.transform = "translateX(0) scale(1.2)";
     }
     function resetAstro(){
-        document.getElementById('astro');
         astro.style.transform = 'translateX(0) rotate(0) scale(1)';
+    }
+    function resetTodo(){
+        resetAstro()
+        document.body.style.backgroundColor = "";
+        moveButton.style.opacity = 1;
+        moveButton.style.cursor = "pointer";
+        moveButton.removeAttribute("disabled");
+        astro.style.top = "";
     }
     function floatAstro(){
         astro.style.top = "10px"
@@ -53,6 +60,9 @@
             moveButton.style.opacity = 0.5;
             moveButton.style.cursor = "not-allowed";
             moveButton.setAttribute("disabled", "");
+        }
+        if (d.code == "Escape"){
+            resetTodo();
         }
     })
     moveButton.addEventListener("mousedown", () => {
